@@ -39,3 +39,15 @@ nav{
     width: 325px;
     margin-top:-50px;
 }
+.service-container{
+    width: 1200px;
+    margin: auto;
+    margin-top: 50px;
+    
+}
+.title{
+    font-size: 44px;
+    color: aqua;
+    text-align: center;
+
+}
