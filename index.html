@@ -23,6 +23,7 @@
 
 </head>
 <body>
+        <!-- header part start  -->
     <header>
         <nav class="d-flex justify-content-around align-items-center p-4">
             <div class="logo-container d-flex  align-items-center gap-2">
@@ -39,7 +40,7 @@
 
     <!-- banner contianer  -->
     <div class="banner-container">
-        <h3>Iam MD TUshar Hossain</h3>
+        <h3>Iam MD Tushar Hossain</h3>
         <div class="banner">
           <div class="banner-left">
             <h1>
@@ -60,8 +61,8 @@
         </div>
       </div>
     </header>
-
-
+        <!-- header part end  -->
+        <!-- main part start -->
     <main>
         <!-- add services from here  -->
 
@@ -88,7 +89,56 @@
             </div>
         </div>
       </div>
+       <!-- all doctors section  -->
+       <div class="doctors-container row d-flex justify-content-center">
+        <div class="col-md-4 text-center d-flex gap-3 justify-content-center">
+          <div class="dropdown">
+            <button
+              class="btn btn-secondary dropdown-toggle"
+              type="button"
+              id="dropdownMenuButton2"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+            >
+              designation
+            </button>
+            <ul
+              id="drop-deg"
+              class="dropdown-menu dropdown-menu-dark"
+              aria-labelledby="dropdownMenuButton2"
+            ></ul>
+          </div>
+          <div class="dropdown">
+            <button
+              class="btn btn-secondary dropdown-toggle"
+              type="button"
+              id="dropdownMenuButton2"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+            >
+              specialization
+            </button>
+            <ul
+              id="drop-spe"
+              class="dropdown-menu dropdown-menu-dark"
+              aria-labelledby="dropdownMenuButton2"
+            ></ul>
+          </div>
+        </div>
+        <div class="col-md-8">
+          <input id="search" type="text" placeholder="search..." />
+          <button onclick="handleSearch()">Search</button>
+          <div id="doctors" class="doctors mt-5"></div>
+          <div id="nodata" class="nodata">
+            <img src="./Images/nodata.png" alt="" />
+          </div>
+          <div id="spinner" class="loading text-center">
+            <h4>loading....</h4>
+          </div>
+        </div>
+      </div>
     </main>
+        <!-- main part end  -->
     <footer></footer>
 
     <!-- add scruipt fill  -->

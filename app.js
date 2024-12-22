@@ -33,4 +33,60 @@ const loadServices = () => {
     });
   }; 
 
+  const loadDoctors = (search) => {
+    document.getElementById("doctors").innerHTML = "";
+    document.getElementById("spinner").style.display = "block";
+    console.log(search);
+    fetch(
+      `https://testing-8az5.onrender.com/doctor/list/?search=${
+        search ? search : ""
+      }`
+    )
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        if (data.results.length > 0) {
+          document.getElementById("spinner").style.display = "none";
+          document.getElementById("nodata").style.display = "none";
+          displyDoctors(data?.results);
+        } else {
+          document.getElementById("doctors").innerHTML = "";
+          document.getElementById("spinner").style.display = "none";
+          document.getElementById("nodata").style.display = "block";
+        }
+      });
+  };
+  
+  const displyDoctors = (doctors) => {
+    doctors?.forEach((doctor) => {
+      // console.log(doctor);
+      const parent = document.getElementById("doctors");
+      const div = document.createElement("div");
+      div.classList.add("doc-card");
+      div.innerHTML = `
+          <img class="doc-img" src=${doctor.image} alt="" />
+                <h4>${doctor?.full_name}</h4>
+                <h6>${doctor?.designation[0]}</h6>
+                <p>
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis,
+                  numquam!
+                </p>
+               
+                <p>
+                
+                ${doctor?.specialization?.map((item) => {
+                  return `<button>${item}</button>`;
+                })}
+                </p>
+  
+                <button > <a target="_blank" href="docDetails.html?doctorId=${
+                  doctor.id
+                }">Details</a> </button>
+          `;
+  
+      parent.appendChild(div);
+    });
+  };
+
   loadServices();
+  loadDoctors();
