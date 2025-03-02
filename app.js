@@ -101,6 +101,22 @@ const loadDesignation = () => {
       });
     });
 };
+const loadspecialization = () => {
+  fetch("https://testing-8az5.onrender.com/doctor/specialization/")
+    .then((res) => res.json())
+    .then((data) => {
+      data.forEach((item) => {
+        const parent = document.getElementById("drop-spe");
+        const li = document.createElement("li");
+        li.classList.add("dropdown-item");
+        li.innerHTML = `
+        <li onclick="loadDoctors('${item.name}')"> ${item.name}</li>
+          `;
+        parent.appendChild(li);
+      });
+    });
+};
+
 const loadSpecialization = () => {
   fetch("https://testing-8az5.onrender.com/doctor/specialization/")
     .then((res) => res.json())
@@ -117,54 +133,37 @@ const loadSpecialization = () => {
     });
 };
 
-// const loadSpecialization = () => {
-//   fetch("https://testing-8az5.onrender.com/doctor/specialization/")
-//     .then((res) => res.json())
-//     .then((data) => {
-//       data.forEach((item) => {
-//         const parent = document.getElementById("drop-spe");
-//         const li = document.createElement("li");
-//         li.classList.add("dropdown-item");
-//         li.innerHTML = `
-//         <li onclick="loadDoctors('${item.name}')"> ${item.name}</li>
-//           `;
-//         parent.appendChild(li);
-//       });
-//     });
-// };
+const handleSearch = () => {
+  const value = document.getElementById("search").value;
+  loadDoctors(value);
+};
 
-// const handleSearch = () => {
-//   const value = document.getElementById("search").value;
-//   loadDoctors(value);
-// };
+const loadReview = () => {
+  fetch("https://testing-8az5.onrender.com/doctor/review/")
+    .then((res) => res.json())
+    .then((data) => displayReview(data));
+};
 
-// const loadReview = () => {
-//   fetch("https://testing-8az5.onrender.com/doctor/review/")
-//     .then((res) => res.json())
-//     .then((data) => displayReview(data));
-// };
-
-// const displayReview = (reviews) => {
-//   reviews.forEach((review) => {
-//     const parent = document.getElementById("review-container");
-//     const div = document.createElement("div");
-//     div.classList.add("review-card");
-//     div.innerHTML = `
-//         <img src="./Images/girl.png" alt="" />
-//             <h4>${review.reviewer}</h4>
-//             <p>
-//              ${review.body.slice(0, 100)}
-//             </p>
-//             <h6>${review.rating}</h6>
-//         `;
-//     parent.appendChild(div);
-//   });
-// };
+const displayReview = (reviews) => {
+  reviews.forEach((review) => {
+    const parent = document.getElementById("review-container");
+    const div = document.createElement("div");
+    div.classList.add("review-card");
+    div.innerHTML = `
+        <img src="./Images/girl.png" alt="" />
+            <h4>${review.reviewer}</h4>
+            <p>
+            ${review.body.slice(0, 100)}
+            </p>
+            <h6>${review.rating}</h6>
+        `;
+    parent.appendChild(div);
+  });
+};
 
 loadServices();
 loadDoctors();
 loadDesignation();
 loadSpecialization();
-// loadReview();
-  
+loadReview();
 
