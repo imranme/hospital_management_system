@@ -117,22 +117,6 @@ const loadspecialization = () => {
     });
 };
 
-const loadSpecialization = () => {
-  fetch("https://testing-8az5.onrender.com/doctor/specialization/")
-    .then((res) => res.json())
-    .then((data) => {
-      data.forEach((item) => {
-        const parent = document.getElementById("drop-spe");
-        const li = document.createElement("li");
-        li.classList.add("dropdown-item");
-        li.innerHTML = `
-        <li onclick="loadDoctors('${item.name}')"> ${item.name}</li>
-          `;
-        parent.appendChild(li);
-      });
-    });
-};
-
 const handleSearch = () => {
   const value = document.getElementById("search").value;
   loadDoctors(value);
